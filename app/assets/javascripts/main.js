@@ -10,5 +10,13 @@ $(document).ready(function() {
 
   window.setInterval(function () {
     app.flights.fetch();
-  }, 3000)
+  }, 10000)
 });
+
+(function($){
+  $(function(){
+
+    $('.button-collapse').sideNav();
+
+  }); // end of document ready
+})(jQuery); // end of jQuery name space
