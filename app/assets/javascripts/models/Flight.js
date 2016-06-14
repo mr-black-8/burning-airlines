@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.Flight = Backbone.Model.extend({
-  urlRoot: "/search",
+  urlRoot: "/flights",
 
   defaults: {
     content: ""
