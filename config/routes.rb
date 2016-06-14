@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resources :users
   resources :flights
   resources :airplanes
+
+  get "/login" => 'session#new', :as => 'login'
+  post "/login" => 'session#create'
+  delete "/logout" => 'session#destroy', :as => 'logout'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

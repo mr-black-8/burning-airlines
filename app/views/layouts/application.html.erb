@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<% if @current_user %>
+  Signed in as <%= @current_user.name %>
+  <%= link_to "(logout)", logout_path, :method=> :delete %>
+<% else %>
+  Not signed in.
+<% end %>
+
 <%= yield %>
 
 </body>
