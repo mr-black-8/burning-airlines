@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get "/login" => 'session#new', :as => 'login'
   post "/login" => 'session#create'
   delete "/logout" => 'session#destroy', :as => 'logout'
-  
+
+  get '/search' => 'pages#search', :as => 'flightSearch'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
