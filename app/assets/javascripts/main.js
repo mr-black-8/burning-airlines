@@ -6,12 +6,15 @@ $(document).ready(function() {
   // Start listening with the router
   Backbone.history.start();
 
+});
+
+var pollFlights = function() {
   app.flights.fetch();
 
   window.setInterval(function () {
     app.flights.fetch();
   }, 10000)
-});
+}
 
 (function($){
   $(function(){
