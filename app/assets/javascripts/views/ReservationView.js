@@ -11,22 +11,27 @@ app.ReservationView = Backbone.View.extend({
 
   render: function(id) {
     var view = this;
+    var res;
     app.flights = new app.Flights();
+    app.reservations = new app.Reservations();
+    yourId = parseInt(id);
+    app.reservations.fetch().done(function() {
+      res = app.reservations.where({
+        flight_id: yourId
+      });
+      console.log(res);
+    })
     app.flights.fetch().done(function () {
-      console.log(id);
-      var results = app.flights.get( id );
-      console.log(results.toJSON());
-      debugger;
-
+      $('.section').empty();
+      flight = app.flights.where({
+        id: yourId
+      })
       var reservationViewTemplate = $("#reservationViewTemplate").html();
-      // Set the HTML of the element with the ID of main to be that appViewTemplate, making sure to use the keyword 'this'
       view.$el.html(reservationViewTemplate);
-      console.log(view);
-
+      console.log(res[0].attributes);
+      $('h1').text();
+      console.log(flight);
     });
-
-    // Create a new instance of something called the secretInputViewTemplate which should be defined in views/SecretInputView.js
-    // Put all of the content from the secretInputViewTemplate on to the page
   }
 
 });

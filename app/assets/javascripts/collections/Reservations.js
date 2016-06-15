@@ -1,8 +1,8 @@
 var app = app || {};
 
 app.Reservations = Backbone.Collection.extend({
-  url: "/flights",
-  model: app.Flight,
+  url: "/reservations",
+  model: app.Reservation,
   initialize: function() {
     console.log("A new flights collection");
     this.on("change", function(reservation) {
