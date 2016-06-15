@@ -13,6 +13,8 @@ p2 = Airplane.create :name => 'AnotherPlane', :row => 30, :column => 6
 
 Flight.destroy_all
 f1 = Flight.create :flightNum => 'PF042', :date => '04.09.2016', :to => "SYD", :from => "MEL"
+f2 = Flight.create :flightNum => 'SF052', :date => '04.10.2016', :to => "SYD", :from => "MEL"
+f3 = Flight.create :flightNum => 'TF042', :date => '04.11.2016', :to => "MEL", :from => "SYD"
 
 User.destroy_all
 simon = User.create :name => 'simon', :email => 'simon@ga.co', :password => 'admin', :password_confirmation => 'admin', :admin => true
