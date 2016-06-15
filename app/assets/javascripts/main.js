@@ -6,6 +6,8 @@ $(document).ready(function() {
   // Start listening with the router
   Backbone.history.start();
 
+  $('.button-collapse').sideNav();
+
 });
 
 var pollFlights = function() {
@@ -15,11 +17,3 @@ var pollFlights = function() {
     app.flights.fetch();
   }, 10000);
 }
-
-(function($){
-  $(function(){
-
-    $('.button-collapse').sideNav();
-
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
