@@ -13,23 +13,32 @@
 
   <div class="field">
     <%= f.label :flightNum %><br>
-    <%= f.text_area :flightNum %>
+    <%= f.text_field :flightNum %>
   </div>
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.text_area :date %>
+    <%= f.date_field :date %>
   </div>
   <div class="field">
     <%= f.label :to %><br>
-    <%= f.text_area :to %>
+    <%= f.text_field :to %>
   </div>
   <div class="field">
     <%= f.label :from %><br>
-    <%= f.text_area :from %>
+    <%= f.text_field :from %>
   </div>
   <div class="field">
+    <% airplane_arr = [] %>
+    <% @airplanes.each do |a| %>
+      <% x = [a.name, a.id] %>
+      <% airplane_arr.push x %>
+    <% end %>
     <%= f.label :airplane_id %><br>
-    <%= f.number_field :airplane_id %>
+    <%= f.select( :airplane_id, airplane_arr, {}, {:multiple => false}) %>
+
+
+    <!-- <%= f.label :airplane_id %><br>
+    <%= f.number_field :airplane_id %> -->
   </div>
   <div class="actions">
     <%= f.submit %>

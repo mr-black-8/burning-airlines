@@ -7,6 +7,7 @@ $(document).ready(function() {
   Backbone.history.start();
 
   $('.button-collapse').sideNav();
+  $('select').material_select();
 
 });
 

@@ -15,7 +15,8 @@ app.ReservationView = Backbone.View.extend({
     app.flights.fetch().done(function () {
       console.log(id);
       var results = app.flights.get( id );
-      console.log(results);
+      console.log(results.toJSON());
+      debugger;
 
       var reservationViewTemplate = $("#reservationViewTemplate").html();
       // Set the HTML of the element with the ID of main to be that appViewTemplate, making sure to use the keyword 'this'
