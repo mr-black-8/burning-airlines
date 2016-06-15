@@ -18,7 +18,7 @@ app.FlightInfoView = Backbone.View.extend({
       var $row = $("<tr id='" + flight.id + "'><td>" + flight.date + "</td><td>" + flight.flightNum + "</td><td>" + flight.from + "</td><td>" + flight.to + "</td><td></td></tr>");
       $($table).append($row);
     }
-    $(".section").append($table);
+    this.$el.append($table);
 
     $("tr").on("click", function() {
       window.location = "#flight/" + this.id;
