@@ -37,6 +37,7 @@ app.SearchFlightView = Backbone.View.extend({
     var searchFlightViewTemplate = $("#searchFlightViewTemplate").html();
     // Set the HTML of the element with the ID of main to be that appViewTemplate, making sure to use the keyword 'this'
     this.$el.html(searchFlightViewTemplate);
+    console.log(this);
 
 
     // Create a new instance of something called the secretInputViewTemplate which should be defined in views/SecretInputView.js
