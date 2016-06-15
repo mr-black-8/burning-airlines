@@ -4,4 +4,8 @@ class PagesController < ApplicationController
 
   end
 
+  def reservation
+
+  end
+
 end

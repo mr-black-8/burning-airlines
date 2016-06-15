@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :reservations
+  
   resources :users
   resources :flights
   resources :airplanes
@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   delete "/logout" => 'session#destroy', :as => 'logout'
 
   get '/search' => 'pages#search', :as => 'flightSearch'
+
+  get '/reservation' => 'pages#reservation', :as => 'reservation'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

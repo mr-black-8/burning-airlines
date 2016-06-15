@@ -20,8 +20,7 @@ simon = User.create :name => 'simon', :email => 'simon@ga.co', :password => 'adm
 boz = User.create :name => 'boz', :email => 'boz@ga.co', :password => 'admin', :password_confirmation => 'admin', :admin => true
 
 Reservation.destroy_all
-r1 = Reservation.create :row => 1,
-:column => "A", :user_id => 1, :flight_id => 1
+r1 = Reservation.create :row => 1, :column => "A", :user_id => 1, :flight_id => 1
 
 p1.flights << f1
 puts "Plane one flight count: #{p1.flights.count}"

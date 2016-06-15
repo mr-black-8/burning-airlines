@@ -10,4 +10,4 @@ app.FlightView = Backbone.View.extend({
     this.$el.html(flightViewTemplate);
 
   }
-})
+});

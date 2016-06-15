@@ -13,7 +13,7 @@ class SessionController < ApplicationController
     if user.present? && user.authenticate( params[:password] )
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in"
-      redirect_to user
+      redirect_to flightSearch_path
     else
       flash[:error] = "Invalid email or password"
       redirect_to login_path
@@ -31,5 +31,5 @@ class SessionController < ApplicationController
   private
     def authenticate
       redirect_to users_path if @current_user
-    end  
+    end
 end
