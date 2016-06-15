@@ -1,46 +1,39 @@
 var app = app || {};
 
-app.SecretInputView = Backbone.View.extend({
+app.SearchFlightView = Backbone.View.extend({
   events: {
-    'click button' : 'createSecret',
-    'keydown textarea' : 'checkForEnter'
+    'click button' : 'searchFlight',
+    'keyup textarea' : 'checkFlight'
   },
 
-  checkForEnter: function(event) {
-    // Check to see if the user hit the enter key
-      // If they did, call the createSecret function
-
-    app.ENTER_KEY = 13;
-
-    if (event.which === app.ENTER_KEY) {
-      event.preventDefault();
-      this.createSecret();
-    }
+  checkFlight: function() {
+    // var searchTerm = $("textarea").val();
+    // console.log(searchTerm);
+    // console.log(app.flights);
+    // var results = app.flights.filter(function(flight) {
+    //   return flight.get("from").indexOf(searchTerm) > -1
+    // });
+    // console.log(results);
   },
 
-  createSecret: function() {
-    console.log("A secret should be created");
-    var secret = new app.Secret();
-    var userContent = this.$el.find("textarea").val();
-    secret.set({
-      content: userContent
-    });
-    secret.save();
-    app.secrets.add(secret);
-    this.$el.find("textarea").val("").focus();
-    // Create a new instance of app.Secret
-    // Set the content to be the value that the textarea has
-    // save the new instance
-    // Add that into the collection
+  searchFlight: function() {
+    var fromSearch = $("#from").val();
+    var toSearch = $("#to").val();
+    console.log("From " + fromSearch + ", to " + toSearch);
+    var results = app.flights.where({
+      from: fromSearch,
+      to: toSearch
+    })
+    console.log(results);
   },
 
-  el: "#secretForm", // Reference an existing element with the ID of secret
+  el: "#searchForm", // Reference an existing element with the ID of searchForm
 
   render: function() {
     console.log("Secret template view should be rendered now");
-    var secretInputViewTemplate = $("#secretInputViewTemplate").html();
+    var searchFlightViewTemplate = $("#searchFlightViewTemplate").html();
     // Set the HTML of the element with the ID of main to be that appViewTemplate, making sure to use the keyword 'this'
-    this.$el.html(secretInputViewTemplate);
+    this.$el.html(searchFlightViewTemplate);
 
     // Create a new instance of something called the secretInputViewTemplate which should be defined in views/SecretInputView.js
     // Put all of the content from the secretInputViewTemplate on to the page

@@ -20,3 +20,4 @@
 //= require_tree ./routers
 //= require turbolinks
 //= require_tree .
+//= require main.js

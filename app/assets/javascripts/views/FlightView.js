@@ -9,5 +9,8 @@ app.FlightView = Backbone.View.extend({
     // Set the HTML of the element with the ID of main to be that appViewTemplate, making sure to use the keyword 'this'
     this.$el.html(flightViewTemplate);
 
+    var searchFlightView = new app.SearchFlightView();
+    searchFlightView.render();
+
   }
 })
