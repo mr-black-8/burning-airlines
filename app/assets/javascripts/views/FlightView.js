@@ -1,11 +1,13 @@
 var app = app || {};
 
 app.FlightView = Backbone.View.extend({
-  tagName: 'li', // $("<li>")
+  el: "#main", // Reference an existing element with the ID of main
+
   render: function() {
-    console.log(this.model.toJSON());
-    var content = this.model.get("content");
-    this.$el.text(content);
-    this.$el.prependTo("#secrets");
+    console.log("Flight View rendered");
+    var flightViewTemplate = $("#flightViewTemplate").html();
+    // Set the HTML of the element with the ID of main to be that appViewTemplate, making sure to use the keyword 'this'
+    this.$el.html(flightViewTemplate);
+
   }
 })
