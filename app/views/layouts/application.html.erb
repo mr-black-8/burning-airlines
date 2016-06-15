@@ -18,7 +18,7 @@
           <li><a href="<%= new_flight_path %>">New Flight</a></li>
         <% end %>
         <% if @current_user %>
-          <li><a href="#">Search</a></li>
+          <li><a href="/search">Search</a></li>
           <li><a href="#">Reservations</a></li>
           <li><%= link_to "Logout", logout_path, :method => :delete %></li>
         <% else %>
@@ -33,7 +33,7 @@
           <li><a href="<%= new_flight_path %>">New Flight</a></li>
         <% end %>
         <% if @current_user %>
-          <li><a href="#">Search</a></li>
+          <li><a href="/search">Search</a></li>
           <li><a href="#">Reservations</a></li>
           <li><%= link_to "Logout", logout_path, :method => :delete %></li>
         <% else %>
