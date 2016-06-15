@@ -5,7 +5,7 @@ app.AppRouter = Backbone.Router.extend({
     '': 'search',
     'flight/:id': function(id) {
       $("#main").empty();
-      var reservationView = new app.ReservationView();
+      var reservationView = new app.ReservationView({collection: app.Reservations});
       reservationView.render(id);
     }
   },
