@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614141859) do
+ActiveRecord::Schema.define(version: 20160614232429) do
 
   create_table "airplanes", force: :cascade do |t|
     t.text     "name"
@@ -44,8 +44,9 @@ ActiveRecord::Schema.define(version: 20160614141859) do
     t.text     "name"
     t.text     "email"
     t.text     "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "admin",           default: false
   end
 
 end

@@ -15,9 +15,9 @@ Flight.destroy_all
 f1 = Flight.create :flightNum => 'PF042', :date => '04.09.2016', :to => "SYD", :from => "MEL"
 
 User.destroy_all
-simon = User.create :name => 'simon', :email => 'simon@ga.co', :password => 'admin', :password_confirmation => 'admin'
+simon = User.create :name => 'simon', :email => 'simon@ga.co', :password => 'admin', :password_confirmation => 'admin', :admin => true
 
-boz = User.create :name => 'boz', :email => 'boz@ga.co', :password => 'admin', :password_confirmation => 'admin'
+boz = User.create :name => 'boz', :email => 'boz@ga.co', :password => 'admin', :password_confirmation => 'admin', :admin => true
 
 Reservation.destroy_all
 r1 = Reservation.create :row => 1,

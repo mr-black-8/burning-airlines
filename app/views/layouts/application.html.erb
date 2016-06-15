@@ -13,11 +13,33 @@
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Burning Airlines</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Link</a></li>
+        <% if @current_user && @current_user.admin %>
+          <li><a href="<%= new_airplane_path %>">New Airplane</a></li>
+          <li><a href="<%= new_flight_path %>">New Flight</a></li>
+        <% end %>
+        <% if @current_user %>
+          <li><a href="#">Search</a></li>
+          <li><a href="#">Reservations</a></li>
+          <li><%= link_to "Logout", logout_path, :method => :delete %></li>
+        <% else %>
+          <li><a href="<%= new_user_path %>">Sign up</a></li>
+          <li><a href="<%= login_path %>">Login</a></li>
+        <% end %>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Link</a></li>
+        <% if @current_user && @current_user.admin %>
+          <li><a href="<%= new_airplane_path %>">New Airplane</a></li>
+          <li><a href="<%= new_flight_path %>">New Flight</a></li>
+        <% end %>
+        <% if @current_user %>
+          <li><a href="#">Search</a></li>
+          <li><a href="#">Reservations</a></li>
+          <li><%= link_to "Logout", logout_path, :method => :delete %></li>
+        <% else %>
+          <li><a href="<%= new_user_path %>">Sign up</a></li>
+          <li><a href="<%= login_path %>">Login</a></li>
+        <% end %>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
