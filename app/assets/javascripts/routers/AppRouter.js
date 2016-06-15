@@ -3,16 +3,16 @@ var app = app || {};
 app.AppRouter = Backbone.Router.extend({
   routes: {
     '/search': 'search',
-    '/flight/:id': function(id){
+
+    '/flight/:id': function(id) {
       var reservationView = new app.ReservationView();
-      reservationView.render();
+      reservationView.render(id);
     }
   },
 
   search: function() {
     console.log("Empty client side URL, index method ran");
-    var appView = new app.FlightView();
-    appView.render();
-  },
-  
+    var flightView = new app.FlightView();
+    flightView.render();
+  }
 });
