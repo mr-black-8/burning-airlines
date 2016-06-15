@@ -7,7 +7,7 @@ app.AppRouter = Backbone.Router.extend({
 
   search: function() {
     console.log("Empty client side URL, index method ran");
-    var appView = new app.AppView();
+    var appView = new app.FlightView();
     appView.render();
   }
 });
