@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/reservation' => 'pages#reservation', :as => 'reservation'
 
   get '/flight/:id' => 'pages#flight'
+  get '/flight' => 'pages#flight'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

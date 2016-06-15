@@ -16,4 +16,4 @@ var pollFlights = function() {
   window.setInterval(function () {
     app.flights.fetch();
   }, 10000);
-}
+};
