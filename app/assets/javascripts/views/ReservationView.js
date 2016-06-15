@@ -1,19 +1,11 @@
-var app = app || {};
-
-app.SearchFlightView = Backbone.View.extend({
+app.ReservationView = Backbone.View.extend({
   events: {
     'click button' : 'searchFlight',
     'keyup textarea' : 'checkFlight'
   },
 
   checkFlight: function() {
-    // var searchTerm = $("textarea").val();
-    // console.log(searchTerm);
-    // console.log(app.flights);
-    // var results = app.flights.filter(function(flight) {
-    //   return flight.get("from").indexOf(searchTerm) > -1
-    // });
-    // console.log(results);
+
   },
 
   searchFlight: function(e) {
@@ -26,20 +18,16 @@ app.SearchFlightView = Backbone.View.extend({
       to: toSearch
     })
     console.log(results);
-
-    var flightInfoView = new app.FlightInfoView(results);
-    flightInfoView.render();
   },
 
-  el: "#searchForm", // Reference an existing element with the ID of searchForm
+  el: "#flightInfo", // Reference an existing element with the ID of searchForm
 
-  render: function() {
-    console.log("Search template view should be rendered now");
-    var searchFlightViewTemplate = $("#searchFlightViewTemplate").html();
+  render: function(id) {
+    console.log("Reservation view");
+    var reservationViewTemplate = $("#reservationViewTemplate").html();
     // Set the HTML of the element with the ID of main to be that appViewTemplate, making sure to use the keyword 'this'
-    this.$el.html(searchFlightViewTemplate);
+    this.$el.html(reservationViewTemplate);
     console.log(this);
-
 
     // Create a new instance of something called the secretInputViewTemplate which should be defined in views/SecretInputView.js
     // Put all of the content from the secretInputViewTemplate on to the page
