@@ -16,7 +16,8 @@ app.SearchFlightView = Backbone.View.extend({
     // console.log(results);
   },
 
-  searchFlight: function() {
+  searchFlight: function(e) {
+    e.preventDefault();
     var fromSearch = $("#from").val();
     var toSearch = $("#to").val();
     console.log("From " + fromSearch + ", to " + toSearch);
