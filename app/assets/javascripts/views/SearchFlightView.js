@@ -25,15 +25,19 @@ app.SearchFlightView = Backbone.View.extend({
       to: toSearch
     })
     console.log(results);
+
+    var flightInfoView = new app.FlightInfoView(results);
+    flightInfoView.render();
   },
 
   el: "#searchForm", // Reference an existing element with the ID of searchForm
 
   render: function() {
-    console.log("Secret template view should be rendered now");
+    console.log("Search template view should be rendered now");
     var searchFlightViewTemplate = $("#searchFlightViewTemplate").html();
     // Set the HTML of the element with the ID of main to be that appViewTemplate, making sure to use the keyword 'this'
     this.$el.html(searchFlightViewTemplate);
+
 
     // Create a new instance of something called the secretInputViewTemplate which should be defined in views/SecretInputView.js
     // Put all of the content from the secretInputViewTemplate on to the page
