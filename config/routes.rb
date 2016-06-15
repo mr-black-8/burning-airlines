@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :flights
   resources :airplanes
+  resources :reservations
 
   get "/login" => 'session#new', :as => 'login'
   post "/login" => 'session#create'
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
 
   get '/search' => 'pages#search', :as => 'flightSearch'
 
-  get '/reservation' => 'pages#reservation', :as => 'reservation'
+  get '/reserveseat' => 'pages#reserveseat', :as => 'reserveseat'
 
   get '/flight/:id' => 'pages#flight'
   get '/flight' => 'pages#flight'
