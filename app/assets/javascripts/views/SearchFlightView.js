@@ -23,7 +23,7 @@ app.SearchFlightView = Backbone.View.extend({
     var results = app.flights.where({
       from: fromSearch,
       to: toSearch
-    })
+    });
     console.log(results);
 
     var flightInfoView = new app.FlightInfoView(results);
