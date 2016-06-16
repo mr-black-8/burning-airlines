@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, only: [:new]
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
 
   # GET /flights
