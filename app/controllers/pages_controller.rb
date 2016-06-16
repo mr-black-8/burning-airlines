@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :authenticate
 
   def search
 
@@ -11,5 +12,10 @@ class PagesController < ApplicationController
   def flight
 
   end
+
+  private
+    def authenticate
+      redirect_to '/login' if !@current_user
+    end
 
 end

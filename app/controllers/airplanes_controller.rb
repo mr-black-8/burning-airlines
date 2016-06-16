@@ -1,4 +1,5 @@
 class AirplanesController < ApplicationController
+  before_action :authenticate
   before_action :set_airplane, only: [:show, :edit, :update, :destroy]
 
   # GET /airplanes
@@ -70,5 +71,9 @@ class AirplanesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def airplane_params
       params.require(:airplane).permit(:name, :row, :column)
+    end
+
+    def authenticate
+      redirect_to '/search' unless @current_user && @current_user.admin
     end
 end

@@ -20,12 +20,12 @@ app.ReservationView = Backbone.View.extend({
         flight_id: yourId
       });
       console.log(res);
-    })
+    });
     app.flights.fetch().done(function () {
       $('#main').empty();
       flight = app.flights.where({
         id: yourId
-      })
+      });
       var reservationViewTemplate = $("#reservationViewTemplate").html();
       view.$el.html(reservationViewTemplate);
       flightNum = flight[0].attributes.flightNum;
@@ -37,15 +37,17 @@ app.ReservationView = Backbone.View.extend({
       var headerTwo = $('<h2>').text(flightFrom + " to " + flightTo);
       view.$el.append(reserveHeading);
       view.$el.append(headerTwo);
-
+      
       var seatMap = res[0].attributes.seat_map;
 
-      console.log(seatMap)
+      var newArray = $.parseJSON(seatMap);
 
-      $table = $("<table>")
+      console.log(newArray);
+
+      $table = $("<table>");
 
       for (var i = 0; i < seatMap.length; i++) {
-        $row = $("<tr>")
+        $row = $("<tr>");
         $table.append($row);
         for (var j = 0; j < seatMap[i].length; j++) {
           $cell = $("<td>");
