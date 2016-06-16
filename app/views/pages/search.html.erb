@@ -37,14 +37,12 @@
 
 <script>
   $(document).ready(function () {
-    pollFlights()
+    pollFlights();
+    pollReservations();
   });
-<<<<<<< HEAD
-  
-=======
+
   <% if @current_user %>
     var currentUser = <%= @current_user.id %>;
   <% end %>
 
->>>>>>> 94b48c31a6e2ffab882b3a00a4814247f0d87767
 </script>

@@ -19,13 +19,29 @@ app.ReservationView = Backbone.View.extend({
 
     console.log(res);
 
-    if (seatMap[row][col] === null) {
-      console.log(this);
-      seatMap[row][col] = currentUser;
-      console.log(seatMap);
-      var saveReservation = app.reservations.get(1);
-      saveReservation.set("seat_map", JSON.stringify(seatMap));
-      saveReservation.save();
+    var alreadyThere;
+
+    for (var i = 0; i < seatMap.length; i++) {
+      alreadyThere = _.contains(seatMap[i], currentUser);
+      if (alreadyThere) {
+        break;
+      }
+    }
+
+    console.log(seatMap);
+    console.log(currentUser);
+    console.log(alreadyThere);
+
+    if (alreadyThere) {
+    } else {
+      if (seatMap[row][col] === null) {
+        console.log(this);
+        seatMap[row][col] = currentUser;
+        console.log(seatMap);
+        var saveReservation = app.reservations.get(1);
+        saveReservation.set("seat_map", JSON.stringify(seatMap));
+        saveReservation.save();
+      }
     }
 
     // var saveReservation = app.reservations.get(3);
@@ -82,7 +98,7 @@ app.ReservationView = Backbone.View.extend({
         $table.append($row);
         for (var j = 0; j < newSeats[i].length; j++) {
           $cell = $("<td data-row='" + i + "' data-col='" + j + "'>");
-          $cell.text("hi" + newSeats[i][j]);
+          $cell.text(newSeats[i][j]);
           $row.append($cell);
         }
       }
