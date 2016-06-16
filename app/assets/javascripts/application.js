@@ -18,6 +18,5 @@
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
-//= require turbolinks
 //= require_tree .
 //= require main.js
