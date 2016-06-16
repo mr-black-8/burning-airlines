@@ -89,7 +89,7 @@ app.ReservationView = Backbone.View.extend({
 
         var newSeats = JSON.parse(seatMap)
 
-        $table = $("<table>");
+        $table = $("<table id='seats'>");
 
         view.seatMap = newSeats;
 
@@ -97,7 +97,11 @@ app.ReservationView = Backbone.View.extend({
           $row = $("<tr>");
           $table.append($row);
           for (var j = 0; j < newSeats[i].length; j++) {
-            $cell = $("<td data-row='" + i + "' data-col='" + j + "'>");
+            if (newSeats[i][j] === null) {
+              $cell = $("<td class='free' data-row='" + i + "' data-col='" + j + "'>");
+            } else {
+              $cell = $("<td class='taken' data-row='" + i + "' data-col='" + j + "'>");
+            }
             $cell.text(newSeats[i][j]);
             $row.append($cell);
           }
@@ -105,7 +109,6 @@ app.ReservationView = Backbone.View.extend({
 
         view.$el.append($table);
       });
-    });
+    })
   }
-
 });
