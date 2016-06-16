@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Burning Airlines</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -45,7 +46,11 @@
     </div>
   </nav>
 
-  <%= flash[:error] %>
+  <div class="row blue">
+    <div class="col s12 white-text" style="text-align:center">
+      <%= flash[:error] %>
+    </div>
+  </div>
 
   <%= yield %>
 

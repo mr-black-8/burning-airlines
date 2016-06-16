@@ -11,19 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s8 offset-s2">
+          <%= f.text_field :name %>
+          <%= f.label :name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4 offset-s2">
+          <%= f.label :row %>
+          <%= f.number_field :row %>
+        </div>
+        <div class="input-field col s4">
+          <%= f.label :column %>
+          <%= f.number_field :column %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s8 offset-s2">
+          <%= f.submit class: 'btn waves-effect waves-light' %>
+        </div>
+      </div>
+    </form>
   </div>
-  <div class="field">
-    <%= f.label :row %><br>
-    <%= f.number_field :row %>
-  </div>
-  <div class="field">
-    <%= f.label :column %><br>
-    <%= f.number_field :column %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
