@@ -39,4 +39,8 @@
   $(document).ready(function () {
     pollFlights()
   });
+  <% if @current_user %>
+    var currentUser = <%= @current_user.id %>;
+  <% end %>
+
 </script>
