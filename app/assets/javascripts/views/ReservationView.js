@@ -47,6 +47,7 @@ app.ReservationView = Backbone.View.extend({
     var view = this;
     debugger;
     if (alreadyThere) {
+      alert("You already have a seat, greedy!")
     } else {
       if (seatMap && seatMap[row][col] === false) {
         // console.log(this);
@@ -99,8 +100,9 @@ app.ReservationView = Backbone.View.extend({
           flightTo = flight.attributes.to;
           // console.log(res.attributes);
           // console.log(flight.attributes.flightNum);
-          var reserveHeading = $('<h1>').text("Flight " + flightNum);
-          var headerTwo = $('<h2>').text(flightFrom + " to " + flightTo);
+          var reserveHeading = $('<h1>').text("Book your seat!");
+          // var reserveHeading = $('<h1>').text("Flight " + flightNum);
+          var headerTwo = $('<h4>').text(flightFrom + " to " + flightTo);
           view.$el.append(reserveHeading);
           view.$el.append(headerTwo);
           // console.log(currentUser);
@@ -110,7 +112,10 @@ app.ReservationView = Backbone.View.extend({
           var newSeats = JSON.parse(seatMap)
           console.log("THIS.SEATMAP: ", newSeats );
 
-          $table = $("<table id='seats'>");
+          $snakes = $("<div class='col s5'><img style='width: 100%' src='/assets/snakes.jpg'></div>");
+          view.$el.append($snakes)
+
+          $table = $("<table id='seats' class='col s5 offset-s2'>");
 
           app.seatMap = view.seatMap = newSeats;
 
@@ -120,10 +125,11 @@ app.ReservationView = Backbone.View.extend({
             for (var j = 0; j < newSeats[i].length; j++) {
               if (newSeats[i][j] === false) {
                 $cell = $("<td class='free' data-row='" + i + "' data-col='" + j + "'>");
+                $cell.text("");
               } else {
                 $cell = $("<td class='taken' data-row='" + i + "' data-col='" + j + "'>");
+                $cell.text(newSeats[i][j]);
               }
-              $cell.text(newSeats[i][j]);
               $row.append($cell);
             }
           }

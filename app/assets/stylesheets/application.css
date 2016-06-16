@@ -16,29 +16,43 @@
  */
 
 
+body {
+  color: #333;
+}
+
 #seats {
-  width: 600px;
-  margin: 0 auto;
+  width: 360px;
 }
 
 h1 {
   text-align: center;
+  font-weight: 300;
 }
 
 h2 {
   text-align: center;
+  font-weight: 300;
+}
+
+h4 {
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: 40px;
 }
 
 .free {
   background-image: url("free-seat.png");
-  height: 93px;
+  height: 56px;
+  width: 56px;
   background-size: cover;
   text-align: center;
 }
 
 .taken {
   background-image: url("taken-seat.png");
-  height: 93px;
+  height: 56px;
+  width: 56px;
   background-size: cover;
   text-align: center;
+  color: white;
 }

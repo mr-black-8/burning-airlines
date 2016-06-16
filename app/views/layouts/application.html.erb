@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Burning Airlines</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Burning Airlines</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/search" class="brand-logo">Burning Airlines</a>
       <ul class="right hide-on-med-and-down">
         <% if @current_user && @current_user.admin %>
           <li><a href="<%= new_airplane_path %>">New Airplane</a></li>
@@ -19,7 +20,7 @@
         <% end %>
         <% if @current_user %>
           <li><a href="/search">Search</a></li>
-          <li><a href="#">Reservations</a></li>
+          <li><a href="/reservations">Reservations</a></li>
           <li><%= link_to "Logout", logout_path, :method => :delete %></li>
         <% else %>
           <li><a href="<%= new_user_path %>">Sign up</a></li>
@@ -34,7 +35,7 @@
         <% end %>
         <% if @current_user %>
           <li><a href="/search">Search</a></li>
-          <li><a href="#">Reservations</a></li>
+          <li><a href="/reservations">Reservations</a></li>
           <li><%= link_to "Logout", logout_path, :method => :delete %></li>
         <% else %>
           <li><a href="<%= new_user_path %>">Sign up</a></li>
@@ -44,13 +45,12 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  <% if @current_user %>
-    Signed in as <%= @current_user.name %>
-    <%= link_to "(logout)", logout_path, :method=> :delete %>
-  <% else %>
-    Not signed in.
-  <% end %>
-  <%= flash[:error] %>
+
+  <div class="row blue">
+    <div class="col s12 white-text" style="text-align:center">
+      <%= flash[:error] %>
+    </div>
+  </div>
 
   <%= yield %>
 
