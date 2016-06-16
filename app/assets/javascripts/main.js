@@ -1,4 +1,5 @@
 app.flights = new app.Flights();
+app.reservations = new app.Reservations();
 
 $(document).ready(function() {
   // Create a new instance of the router
@@ -10,6 +11,13 @@ $(document).ready(function() {
   $('select').material_select();
 
 });
+
+var pollReservations = function() {
+
+  window.setInterval(function () {
+    app.reservations.fetch();
+  }, 1000);
+};
 
 var pollFlights = function() {
   app.flights.fetch();
