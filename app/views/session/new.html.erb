@@ -4,17 +4,25 @@
   <p>You are already logged in...</p>
 <% else %>
   <%= form_tag login_path do %>
-    <p>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
       <%= label_tag :email %>
       <%= email_field_tag :email %>
-    </p>
+    </div>
+  </div>
 
-    <p>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
       <%= label_tag :password %>
       <%= password_field_tag :password %>
-    </p>
+    </div>
+  </div>
 
-    <%= submit_tag "Login" %>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <%= submit_tag "Login", class: 'btn waves-effect waves-light' %>
+    </div>
+  </div>
 
   <% end %>
 <% end %>

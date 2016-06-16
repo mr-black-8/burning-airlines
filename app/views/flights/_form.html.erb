@@ -11,36 +11,48 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :flightNum %><br>
-    <%= f.text_field :flightNum %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_field :date %>
-  </div>
-  <div class="field">
-    <%= f.label :to %><br>
-    <%= f.text_field :to %>
-  </div>
-  <div class="field">
-    <%= f.label :from %><br>
-    <%= f.text_field :from %>
-  </div>
-  <div class="field">
-    <% airplane_arr = [] %>
-    <% @airplanes.each do |a| %>
-      <% x = [a.name, a.id] %>
-      <% airplane_arr.push x %>
-    <% end %>
-    <%= f.label :airplane_id %><br>
-    <%= f.select( :airplane_id, airplane_arr, {}, {:multiple => false}) %>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s4 offset-s2">
+          <%= f.label :flightNum %>
+          <%= f.text_field :flightNum %>
+        </div>
+        <div class="input-field col s4">
+          <%= f.label :date %>
+          <%= f.date_field :date, class: "datepicker"%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4 offset-s2">
+          <%= f.label :from %>
+          <%= f.text_field :from %>
+        </div>
+        <div class="input-field col s4">
+          <%= f.label :to %>
+          <%= f.text_field :to %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s8 offset-s2">
+          <% airplane_arr = [] %>
+          <% @airplanes.each do |a| %>
+            <% x = [a.name, a.id] %>
+            <% airplane_arr.push x %>
+          <% end %>
+          <%= f.label :airplane_id %><br>
+          <%= f.select( :airplane_id, airplane_arr, {}, {:multiple => false}) %>
 
+          <!-- <%= f.label :airplane_id %><br>
+          <%= f.number_field :airplane_id %> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s8 offset-s2">
+          <%= f.submit class: 'btn waves-effect waves-light' %>
+        </div>
+      </div>
+    </form>
+  </div>
 
-    <!-- <%= f.label :airplane_id %><br>
-    <%= f.number_field :airplane_id %> -->
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
