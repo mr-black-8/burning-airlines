@@ -14,3 +14,31 @@
  *= require materialize.min.css
  *= require_self
  */
+
+
+#seats {
+  width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.free {
+  background-image: url("free-seat.png");
+  height: 93px;
+  background-size: cover;
+  text-align: center;
+}
+
+.taken {
+  background-image: url("taken-seat.png");
+  height: 93px;
+  background-size: cover;
+  text-align: center;
+}

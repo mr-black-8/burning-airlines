@@ -8,16 +8,16 @@ app.ReservationView = Backbone.View.extend({
     var row = $(e.currentTarget).data("row");
     var seatMap = this.seatMap;
 
-    console.log(col);
-    console.log(row);
+    // console.log(col);
+    // console.log(row);
 
-    console.log(this.seatMap);
+    // console.log(this.seatMap);
 
-    console.log(seatMap[row][col]);
+    // console.log(seatMap[row][col]);
 
     var res = this.res;
 
-    console.log(res);
+    // console.log(res);
 
     var alreadyThere;
 
@@ -28,16 +28,16 @@ app.ReservationView = Backbone.View.extend({
       }
     }
 
-    console.log(seatMap);
-    console.log(currentUser);
-    console.log(alreadyThere);
+    // console.log(seatMap);
+    // console.log(currentUser);
+    // console.log(alreadyThere);
 
     if (alreadyThere) {
     } else {
       if (seatMap[row][col] === null) {
-        console.log(this);
+        // console.log(this);
         seatMap[row][col] = currentUser;
-        console.log(seatMap);
+        // console.log(seatMap);
         var saveReservation = app.reservations.get(1);
         saveReservation.set("seat_map", JSON.stringify(seatMap));
         saveReservation.save();
@@ -64,47 +64,53 @@ app.ReservationView = Backbone.View.extend({
       res = app.reservations.findWhere({
         flight_id: app.flight_id
       });
-      console.log(res);
+      // console.log(res);
       view.res = res;
-    })
-    app.flights.fetch().done(function () {
-      $('#main').empty();
-      var flight = app.flights.findWhere({
-        id: app.flight_id
-      })
-      var reservationViewTemplate = $("#reservationViewTemplate").html();
-      view.$el.html(reservationViewTemplate);
-      flightNum = flight.attributes.flightNum;
-      flightFrom = flight.attributes.from;
-      flightTo = flight.attributes.to;
-      console.log(res.attributes);
-      console.log(flight.attributes.flightNum);
-      var reserveHeading = $('<h1>').text("Flight " + flightNum);
-      var headerTwo = $('<h2>').text(flightFrom + " to " + flightTo);
-      view.$el.append(reserveHeading);
-      view.$el.append(headerTwo);
-      console.log(currentUser);
 
-      var seatMap = res.attributes.seat_map;
+      app.flights.fetch().done(function () {
+        $('#main').empty();
+        var flight = app.flights.findWhere({
+          id: app.flight_id
+        })
+        var reservationViewTemplate = $("#reservationViewTemplate").html();
+        view.$el.html(reservationViewTemplate);
+        flightNum = flight.attributes.flightNum;
+        flightFrom = flight.attributes.from;
+        flightTo = flight.attributes.to;
+        // console.log(res.attributes);
+        // console.log(flight.attributes.flightNum);
+        var reserveHeading = $('<h1>').text("Flight " + flightNum);
+        var headerTwo = $('<h2>').text(flightFrom + " to " + flightTo);
+        view.$el.append(reserveHeading);
+        view.$el.append(headerTwo);
+        // console.log(currentUser);
 
-      var newSeats = JSON.parse(seatMap)
+        var seatMap = res.attributes.seat_map;
 
-      $table = $("<table>");
+        var newSeats = JSON.parse(seatMap)
 
-      view.seatMap = newSeats;
+        $table = $("<table id='seats'>");
 
-      for (var i = 0; i < newSeats.length; i++) {
-        $row = $("<tr>");
-        $table.append($row);
-        for (var j = 0; j < newSeats[i].length; j++) {
-          $cell = $("<td data-row='" + i + "' data-col='" + j + "'>");
-          $cell.text(newSeats[i][j]);
-          $row.append($cell);
+        view.seatMap = newSeats;
+
+        for (var i = 0; i < newSeats.length; i++) {
+          $row = $("<tr>");
+          $table.append($row);
+          for (var j = 0; j < newSeats[i].length; j++) {
+            if (newSeats[i][j] === null) {
+              $cell = $("<td class='free' data-row='" + i + "' data-col='" + j + "'>");
+            } else {
+              $cell = $("<td class='taken' data-row='" + i + "' data-col='" + j + "'>");
+            }
+            $cell.text(newSeats[i][j]);
+            $row.append($cell);
+          }
         }
-      }
 
-      view.$el.append($table);
-    });
+        view.$el.append($table);
+      });
+    })
+
   }
 
 });
