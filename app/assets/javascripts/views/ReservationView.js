@@ -3,8 +3,37 @@ app.ReservationView = Backbone.View.extend({
     'click td' : 'reserveSeat',
   },
 
-  reserveSeat: function() {
-    console.log("Reserved?");
+  reserveSeat: function(e) {
+    var col = $(e.currentTarget).data("col");
+    var row = $(e.currentTarget).data("row");
+    var seatMap = this.seatMap;
+
+    console.log(col);
+    console.log(row);
+
+    console.log(this.seatMap);
+
+    console.log(seatMap[row][col]);
+
+    var res = this.res;
+
+    console.log(res);
+
+    if (seatMap[row][col] === null) {
+      console.log(this);
+      seatMap[row][col] = currentUser;
+      console.log(seatMap);
+      var saveReservation = app.reservations.get(1);
+      saveReservation.set("seat_map", JSON.stringify(seatMap));
+      saveReservation.save();
+    }
+
+    // var saveReservation = app.reservations.get(3);
+    // saveReservation.set("seat_map", "[[null, null],[null, null]]");
+    // saveReservation.save();
+
+    // console.log(thing);
+
   },
 
   el: "#main", // Reference an existing element with the ID of searchForm
@@ -16,41 +45,44 @@ app.ReservationView = Backbone.View.extend({
     app.reservations = new app.Reservations();
     yourId = parseInt(id);
     app.reservations.fetch().done(function() {
-      res = app.reservations.where({
-        flight_id: yourId
+      res = app.reservations.findWhere({
+        flight_id: app.flight_id
       });
       console.log(res);
-    });
+      view.res = res;
+    })
     app.flights.fetch().done(function () {
       $('#main').empty();
-      flight = app.flights.where({
-        id: yourId
-      });
+      var flight = app.flights.findWhere({
+        id: app.flight_id
+      })
       var reservationViewTemplate = $("#reservationViewTemplate").html();
       view.$el.html(reservationViewTemplate);
-      flightNum = flight[0].attributes.flightNum;
-      flightFrom = flight[0].attributes.from;
-      flightTo = flight[0].attributes.to;
-      console.log(res[0].attributes);
-      console.log(flight[0].attributes.flightNum);
+      flightNum = flight.attributes.flightNum;
+      flightFrom = flight.attributes.from;
+      flightTo = flight.attributes.to;
+      console.log(res.attributes);
+      console.log(flight.attributes.flightNum);
       var reserveHeading = $('<h1>').text("Flight " + flightNum);
       var headerTwo = $('<h2>').text(flightFrom + " to " + flightTo);
       view.$el.append(reserveHeading);
       view.$el.append(headerTwo);
-      
-      var seatMap = res[0].attributes.seat_map;
+      console.log(currentUser);
 
-      var newArray = $.parseJSON(seatMap);
+      var seatMap = res.attributes.seat_map;
 
-      console.log(newArray);
+      var newSeats = JSON.parse(seatMap)
 
       $table = $("<table>");
 
-      for (var i = 0; i < seatMap.length; i++) {
+      view.seatMap = newSeats;
+
+      for (var i = 0; i < newSeats.length; i++) {
         $row = $("<tr>");
         $table.append($row);
-        for (var j = 0; j < seatMap[i].length; j++) {
-          $cell = $("<td>");
+        for (var j = 0; j < newSeats[i].length; j++) {
+          $cell = $("<td data-row='" + i + "' data-col='" + j + "'>");
+          $cell.text("hi" + newSeats[i][j]);
           $row.append($cell);
         }
       }

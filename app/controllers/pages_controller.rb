@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate
 
   def search
-
+    
   end
 
   def reservation
