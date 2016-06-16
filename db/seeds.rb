@@ -31,6 +31,8 @@ r3 = Reservation.create :row => 1, :column => "A", :user_id => 1, :flight_id => 
 p1.flights << f1
 puts "Plane one flight count: #{p1.flights.count}"
 f1.reservations << r1
+f2.reservations << r2
+f3.reservations << r3
 puts "Flight one reservation count: #{f1.reservations.count}"
 simon.reservations << r1
 puts "User one reservation count: #{simon.reservations.count}"

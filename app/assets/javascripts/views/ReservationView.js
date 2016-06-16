@@ -30,7 +30,6 @@ app.ReservationView = Backbone.View.extend({
     var alreadyThere;
     // debugger;
 
-    debugger;
     if (seatMap) {
       for (var i = 0; i < seatMap.length; i++) {
         alreadyThere = _.contains(seatMap[i], currentUser);
@@ -45,7 +44,7 @@ app.ReservationView = Backbone.View.extend({
     // console.log(currentUser);
     // console.log(alreadyThere);
     var view = this;
-    debugger;
+
     if (alreadyThere) {
     } else {
       if (seatMap && seatMap[row][col] === false) {
@@ -90,7 +89,7 @@ app.ReservationView = Backbone.View.extend({
         $('#main').empty();
         var flight = app.flights.findWhere({
           id: app.flight_id
-        })
+        });
         if ( flight ) {
           var reservationViewTemplate = $("#reservationViewTemplate").html();
           view.$el.html(reservationViewTemplate);
@@ -107,7 +106,7 @@ app.ReservationView = Backbone.View.extend({
 
           var seatMap = res.attributes.seat_map;
 
-          var newSeats = JSON.parse(seatMap)
+          var newSeats = JSON.parse(seatMap);
           console.log("THIS.SEATMAP: ", newSeats );
 
           $table = $("<table id='seats'>");
@@ -131,6 +130,6 @@ app.ReservationView = Backbone.View.extend({
           view.$el.append($table);
         }
       });
-    })
+    });
   }
 });

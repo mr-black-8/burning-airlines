@@ -1,3 +1,16 @@
+<script>
+  $(document).ready(function(){
+    app.flights.fetch().done(function() {
+      $("td").each(function(){
+        if( $( this ).data('id') ) {
+          flight = app.flights.find('id', $(this).data('id')).toJSON();
+          $(this).text( flight.flightNum + ": " + flight.from + " -> " + flight.to )
+        }
+      })
+    });
+  });
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Reservations</h1>
@@ -5,29 +18,36 @@
 <table>
   <thead>
     <tr>
-      <th>Row</th>
-      <th>Column</th>
-      <th>User</th>
       <th>Flight</th>
+      <th>Column</th>
+      <th>Row</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @reservations.each do |reservation| %>
-      <tr>
-        <td><%= reservation.row %></td>
-        <td><%= reservation.column %></td>
-        <td><%= reservation.user_id %></td>
-        <td><%= reservation.flight_id %></td>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% seat_map_arr = eval(reservation.seat_map) %>
+      <% bool = false %>
+      <% c = nil %>
+      <% r = nil %>
+      <% seat_map_arr.each_with_index do |arr,index| %>
+        <% if arr.include? @current_user.id %>
+          <% bool = true %>
+          <% col_index = arr.index(@current_user.id) %>
+          <% c = ('A'..'Z').to_a[col_index] %>
+          <% r = index %>
+        <% end %>
+      <% end %>
+      <% if bool %>
+        <tr>
+          <td data-id="<%= reservation.flight_id %>"><%= reservation.flight_id %></td>
+          <td><%= c %></td>
+          <td><%= r %></td>
+          <td><%= @current_user.name %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Reservation', new_reservation_path %>
