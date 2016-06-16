@@ -11,5 +11,8 @@ app.Reservations = Backbone.Collection.extend({
       });
       reservationView.render();
     });
+    this.on("change:seat_map", function () {
+      console.log("SEAT MAP JUST CHANGED");
+    });
   }
 });
