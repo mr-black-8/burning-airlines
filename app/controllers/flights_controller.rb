@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, only: [:new]
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
 
   # GET /flights
@@ -31,6 +31,29 @@ class FlightsController < ApplicationController
 
     respond_to do |format|
       if @flight.save
+
+        reservation = Reservation.new
+        reservation.flight_id = @flight.id
+        r = @flight.airplane.row
+        c = @flight.airplane.column
+        seat_array = []
+        i = 0
+        j = 0
+
+        while i < r do
+          row = []
+          while j < 6 do
+            row.push(false)
+            j += 1
+          end
+          seat_array.push(row)
+          i += 1
+          j = 0
+        end
+
+        reservation.seat_map = seat_array
+        reservation.save
+
         format.html { redirect_to @flight, notice: 'Flight was successfully created.' }
         format.json { render :show, status: :created, location: @flight }
       else

@@ -22,7 +22,11 @@ simon = User.create :name => 'simon', :email => 'simon@ga.co', :password => 'adm
 boz = User.create :name => 'boz', :email => 'boz@ga.co', :password => 'admin', :password_confirmation => 'admin', :admin => true
 
 Reservation.destroy_all
-r1 = Reservation.create :row => 1, :column => "A", :user_id => 1, :flight_id => 1, :seat_map => "[[null, null, null, null, null, null],[null, null, null, null, null, null],[null, null, null, null, null, null],[null, null, null, null, null, null],[null, null, null, null, null, null],[null, null, null, null, null, null],[null, null, null, null, null, null],[null, null, null, null, null, null],[null, null, null, null, null, null],[null, null, null, null, null, null]]"
+r1 = Reservation.create :row => 1, :column => "A", :user_id => 1, :flight_id => 1, :seat_map => "[[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]"
+
+r2 = Reservation.create :row => 1, :column => "A", :user_id => 1, :flight_id => 2, :seat_map => "[[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]"
+
+r3 = Reservation.create :row => 1, :column => "A", :user_id => 1, :flight_id => 3, :seat_map => "[[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]"
 
 p1.flights << f1
 puts "Plane one flight count: #{p1.flights.count}"
