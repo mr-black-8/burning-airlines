@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    redirect_to '/search'
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    redirect_to '/search'
   end
 
   # GET /users/new
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    redirect_to '/search'
   end
 
   # POST /users
