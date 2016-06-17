@@ -46,7 +46,7 @@ app.ReservationView = Backbone.View.extend({
     var view = this;
 
     if (alreadyThere) {
-      alert("You already have a seat, greedy!")
+      Materialize.toast('1 seat per person. NO SEAT FOR YOU', 4000)
     } else {
       if (seatMap && seatMap[row][col] === false) {
         // console.log(this);
@@ -60,6 +60,7 @@ app.ReservationView = Backbone.View.extend({
 
           });
         }
+        Materialize.toast('Seat booked! Refer to your reservations page for details', 4000)
       }
     }
 

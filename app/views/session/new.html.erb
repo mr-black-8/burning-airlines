@@ -1,28 +1,33 @@
-<h2>Login</h2>
+<div class="parallax-container valign-wrapper" style="margin-top: -20px; height: 100vh">
+    <div class="row container white-text valign">
+        <h2 class="header">Login</h2>
+        <% if @current_user %>
+        <p>You are already logged in...</p>
+    <% else %>
+        <%= form_tag login_path do %>
+        <div class="row">
+            <div class="input-field col s8 offset-s2">
+                <%= label_tag :email, nil, class: 'white-text' %>
+                <%= email_field_tag :email %>
+            </div>
+        </div>
 
-<% if @current_user %>
-  <p>You are already logged in...</p>
-<% else %>
-  <%= form_tag login_path do %>
-  <div class="row">
-    <div class="input-field col s8 offset-s2">
-      <%= label_tag :email %>
-      <%= email_field_tag :email %>
+        <div class="row">
+            <div class="input-field col s8 offset-s2">
+                <%= label_tag :password, nil, class: 'white-text' %>
+                <%= password_field_tag :password %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s8 offset-s2">
+                <%= submit_tag "Login", class: 'btn waves-effect waves-light red darken-1' %>
+            </div>
+        </div>
+
+        <% end %>
+        <% end %>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="input-field col s8 offset-s2">
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="input-field col s8 offset-s2">
-      <%= submit_tag "Login", class: 'btn waves-effect waves-light' %>
-    </div>
-  </div>
-
-  <% end %>
-<% end %>
+    <div class="parallax"><img src="/assets/background.jpg"></div>
+</div>
+<div class="section white"></div>
